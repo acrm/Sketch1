@@ -1,5 +1,7 @@
 package com.example.Sketch1.Kernel.Contracts;
 
+import android.graphics.Bitmap;
+import android.graphics.Matrix;
 import com.example.Sketch1.Kernel.CoordinateConverter;
 
 /**
@@ -10,12 +12,18 @@ import com.example.Sketch1.Kernel.CoordinateConverter;
  * To change this template use File | Settings | File Templates.
  */
 public interface IGraphicsContext {
-    void SetCoordinateConverter(CoordinateConverter converter);
-    CoordinateConverter GetCoordinateConverter();
+    void setCoordinateConverter(CoordinateConverter converter);
+    CoordinateConverter getCoordinateConverter();
 
-    void FillEllipse(Point topLeft, Size size, Color color);
+    void fillEllipse(Point topLeft, Size size, Color color);
 
-    void DrawText(String text, Point topLeft, Color color);
+    void drawText(String text, Point topLeft, Color color);
 
-    void Clear();
+    void clear();
+
+    Bitmap getImage(int resourceId);
+
+    void drawColor(int color);
+
+    void drawBitmap(Bitmap bitmap, Matrix matrix);
 }

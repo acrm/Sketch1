@@ -11,17 +11,16 @@ import android.view.SurfaceView;
  * Time: 11:56
  * To change this template use File | Settings | File Templates.
  */
-public class MySurfaceView extends SurfaceView implements SurfaceHolder.Callback {
+public class RenderComponent extends SurfaceView implements SurfaceHolder.Callback {
     private DrawThread drawThread;
 
-    public MySurfaceView(Context context) {
+    public RenderComponent(Context context) {
         super(context);
         getHolder().addCallback(this);
     }
 
     @Override
-    public void surfaceChanged(SurfaceHolder holder, int format, int width,
-                               int height) {
+    public void surfaceChanged(SurfaceHolder holder, int format, int width, int height) {
     }
 
     @Override

@@ -10,5 +10,5 @@ import com.example.Sketch1.Kernel.Contracts.IGraphicsContext;
  * To change this template use File | Settings | File Templates.
  */
 public interface Drawable {
-    void Draw(IGraphicsContext context);
+    void draw(IGraphicsContext context);
 }

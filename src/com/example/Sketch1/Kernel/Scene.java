@@ -13,7 +13,7 @@ import java.util.Vector;
  * Time: 9:16
  * To change this template use File | Settings | File Templates.
  */
-public class Scene implements Drawable {
+public class Scene implements Drawable, DynamicObject {
     private List<PhysicalPoint> points;
     private Point origin;
     private SceneCoordinateConverter coordinateConverter;
@@ -25,19 +25,29 @@ public class Scene implements Drawable {
         points = new Vector<PhysicalPoint>();
     }
     
-    public void AddPoint(PhysicalPoint point) {
+    public void addPoint(PhysicalPoint point) {
         points.add(point);
     }
 
     @Override
-    public void Draw(IGraphicsContext context) {
-        CoordinateConverter formerConverter = context.GetCoordinateConverter();
-        context.SetCoordinateConverter(coordinateConverter);
+    public void draw(IGraphicsContext context) {
+        CoordinateConverter formerConverter = context.getCoordinateConverter();
+        context.setCoordinateConverter(coordinateConverter);
 
         for(PhysicalPoint point : points) {
-            point.Draw(context);
+            point.draw(context);
         }
 
-        context.SetCoordinateConverter(formerConverter);
+        context.setCoordinateConverter(formerConverter);
+    }
+
+    @Override
+    public void act(IActualContext context) {
+        for(PhysicalPoint point : points) {
+            if(point instanceof DynamicObject)  {
+                DynamicObject dynamicPoint = (DynamicObject) point;
+                dynamicPoint.act(context);
+            }
+        }
     }
 }

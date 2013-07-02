@@ -19,12 +19,12 @@ public class PhysicalPoint implements Drawable {
     private Color actualColor;
 
     @Override
-    public void Draw(IGraphicsContext context) {
+    public void draw(IGraphicsContext context) {
         Point topLeft = coordinate.Subtract(new Vector(size.x / 2, size.y / 2));
-        context.FillEllipse(topLeft, size, actualColor);
+        context.fillEllipse(topLeft, size, actualColor);
     }
 
-    public void Place(Point coordinate) {
+    public void place(Point coordinate) {
         this.coordinate = coordinate;
     }
 
